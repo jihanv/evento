@@ -22,7 +22,7 @@ export default function Header() {
                     {
                         routes.map((route) => (
                             <li key={route.path}
-                                className="text=white/50 hover:text-white">
+                                className="text=white/50 hover:text-white transition">
                                 <Link href={route.path}>{route.name}</Link>
                             </li>
                         ))
