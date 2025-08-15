@@ -30,7 +30,7 @@ export default function Header() {
                     {
                         routes.map((route) => (
                             <li key={route.path}
-                                className={clsx(" hover:text-white items-center relative transition", {
+                                className={clsx(" hover:text-white flex items-center relative transition", {
                                     "text-white": activePathName === route.path,
                                     "text-white/50": activePathName !== route.path,
                                 })}>
