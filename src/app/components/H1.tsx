@@ -4,7 +4,7 @@ import { cn } from "../lib/utils"
 
 type H1Props = {
     children: React.ReactNode,
-    className: string
+    className?: string
 
 }
 
