@@ -1,5 +1,5 @@
-import { EventoEvent } from "@/app/lib/types"
-import EventCard from "@/app/components/Event-card";
+import { EventoEvent } from "@/lib/types"
+import EventCard from "@/components/Event-card";
 
 type EventListProps = {
     events: EventoEvent[];

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ACCENT_COLOR } from "./lib/constants";
-import SearchForm from "./components/Search-form";
-import H1 from "./components/H1";
+import { ACCENT_COLOR } from "../lib/constants";
+import SearchForm from "../components/Search-form";
+import H1 from "../components/H1";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
-import EventList from "@/app/components/Event-list";
-import H1 from "@/app/components/H1";
-import { EventoEvent } from "@/app/lib/types";
+import EventList from "@/components/Event-list";
+import H1 from "@/components/H1";
+import { EventoEvent } from "@/lib/types";
 
 export default async function EventsPage({
     params,

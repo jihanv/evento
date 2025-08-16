@@ -1,22 +1,25 @@
-import H1 from "@/app/components/H1"
-import Image from "next/image"
+import H1 from "@/components/H1";
+import Skeleton from "@/components/skeleton";
+import Image from "next/image";
 
 type EventPageProps = {
     params: {
-        slug: string,
-    }
-}
+        slug: string;
+    };
+};
 
 export default async function EventPage({ params }: EventPageProps) {
+    const slug = params.slug;
 
-    const slug = params.slug
+    const response = await fetch(
+        `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
+    );
 
-    const response = await fetch(`https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`)
-
-    const event = await response.json()
+    const event = await response.json();
 
     return (
         <main>
+
             <section className="relative overflow-hidden flex justify-center items-center py-14 md:py-20">
                 <Image
                     src={event.imageUrl}
@@ -42,24 +45,51 @@ export default async function EventPage({ params }: EventPageProps) {
                             {new Date(event.date).toLocaleDateString("en-US", {
                                 weekday: "long",
                                 month: "long",
-                                day: "numeric"
+                                day: "numeric",
                             })}
                         </p>
-                        <H1 className="mb-2 mt-1 whitespace-nowrap lg:text-5xl">{event.name}</H1>
+                        <H1 className="mb-2 mt-1 whitespace-nowrap lg:text-5xl">
+                            {event.name}
+                        </H1>
 
                         <p className="whitespace-nowrap text-xl text-white/75">
                             Organized by <span className="italic">{event.organizerName}</span>
                         </p>
 
-                        <button className="bg-white/20 text-lg capitalize bg-blur mt-5 lg:mt-auto w-[95] rounded-md border-white/10 border-2 sm:w-full py-2 hover:scale-105 focus:scale-105 active:scale-[1.02] transition">
+                        <button className="bg-white/20 text-lg capitalize bg-blur mt-5 lg:mt-auto w-[95] rounded-md border-white/10 border-2 sm:w-full py-2 state-effects">
                             Get tickets
                         </button>
                     </div>
                 </div>
-
-
             </section>
-            <div></div>
+            <div className="min-h-[75] text-center px-5 py-16">
+                <Section>
+                    <SectionHeading>About this event</SectionHeading>
+                    <SectionParapgraph>
+                        {event.description}
+                    </SectionParapgraph>
+                </Section>
+                <Section>
+                    <SectionHeading>Location</SectionHeading>
+                    <SectionParapgraph>{event.location}</SectionParapgraph>
+                </Section>
+            </div>
         </main>
+    );
+}
+
+function Section({ children }: { children: React.ReactNode }) {
+    return <section className="mb-12">{children}</section>;
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+    return <h2 className="text-2xl mb-8">{children}</h2>;
+}
+
+function SectionParapgraph({ children }: { children: React.ReactNode }) {
+    return (
+        <p className="max-w-4xl mx-auto text-lg leading-8 text-white/75">
+            {children}
+        </p>
     );
 }

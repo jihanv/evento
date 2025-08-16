@@ -1,4 +1,4 @@
-import { EventoEvent } from "@/app/lib/types";
+import { EventoEvent } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,15 +13,14 @@ export default function EventCard({ event }: EventCardProps) {
             href={`/event/${event.slug}`}
         >
             <section
-                className="w-full h-full flex flex-col  bg-white/[3%] rounded-xl overflow-hidden relative transition hover:scale-105 active:scale-[1.02]
-        "
+                className="w-full h-full flex flex-col  bg-white/[3%] rounded-xl overflow-hidden relative state-effects"
             >
                 <Image
                     src={event.imageUrl}
                     alt={event.name}
                     width={500}
                     height={280}
-                    className="h-[60%] object-fit"
+                    className="h-[60%] object-cover"
                 />
 
                 <div className="flex flex-col flex-1 justify-center items-center">
