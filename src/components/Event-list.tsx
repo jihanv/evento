@@ -5,14 +5,14 @@ import PaginationControls from "./pagination-controls";
 
 type EventListProps = {
     city: string;
-    page: number;
+    page?: number;
 }
 
 
-export default async function EventList({ city, page }: EventListProps) {
-    // if (process.env.NODE_ENV === "development") {
-    //     await new Promise((r) => setTimeout(r, 2000));
-    // }
+export default async function EventList({ city, page = 1 }: EventListProps) {
+    if (process.env.NODE_ENV === "development") {
+        await new Promise((r) => setTimeout(r, 2000));
+    }
 
 
 
