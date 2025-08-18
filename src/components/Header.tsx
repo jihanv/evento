@@ -21,7 +21,6 @@ const routes = [
 export default function Header() {
 
     const activePathName = usePathname();
-    console.log(activePathName)
     return (
         <header className="flex justify-between 
         items-center border-b border-white/10 h-14 px-3 sm:px-9 ">
