@@ -18,6 +18,18 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
         title: event.name,
     })
 }
+
+export async function generateStaticParams() {
+    return [
+        {
+            slug: "dj-practice-session"
+        },
+        {
+            slug: "3d-animation-workshop"
+        }
+    ]
+}
+
 export default async function EventPage({ params }: EventPageProps) {
     const slug = params.slug;
 
